@@ -1,8 +1,0 @@
-streamlit 
-pybase64
-torch
-torchvision
-presidio_analyzer
-gradio
-pillow
-gradio_client
