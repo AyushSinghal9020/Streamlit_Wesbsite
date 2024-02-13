@@ -2,6 +2,7 @@ import streamlit as st
 from copy import deepcopy
 from PIL import Image
 import streamlit.components.v1 as components
+from gradio_client import Client
 
 from helper import (
     check_api , 
