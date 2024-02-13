@@ -3,13 +3,6 @@ from copy import deepcopy
 from PIL import Image
 import torch
 
-import pkg_resources
-
-installed_packages = pkg_resources.working_set
-installed_packages_list = sorted(["%s==%s" % (i.key, i.version) for i in installed_packages])
-
-st.write(installed_packages_list)
-
 import streamlit.components.v1 as components
 from gradio_client import Client
 
@@ -27,7 +20,7 @@ import torch
 from torchvision.utils import save_image
 from presidio_analyzer import AnalyzerEngine
 
-st.set_page_config(layout = 'wide')
+# st.set_page_config(layout = 'wide')
 
 themes = {
     '0' : [
