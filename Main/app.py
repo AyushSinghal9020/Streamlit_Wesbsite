@@ -4,7 +4,7 @@ from PIL import Image
 import torch
 import os 
 
-st.write(os.listdir('Assets'))
+st.write(os.listdir('Main'))
 import streamlit.components.v1 as components
 from gradio_client import Client
 
