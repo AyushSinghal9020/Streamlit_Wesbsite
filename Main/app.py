@@ -1,6 +1,7 @@
 import streamlit as st
 from copy import deepcopy
 from PIL import Image
+import torch
 
 import pkg_resources
 
