@@ -1,6 +1,14 @@
 import streamlit as st
 from copy import deepcopy
 from PIL import Image
+
+import pkg_resources
+
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version) for i in installed_packages])
+
+st.write(installed_packages_list)
+
 import streamlit.components.v1 as components
 from gradio_client import Client
 
