@@ -5,3 +5,4 @@ torchvision
 presidio_analyzer
 gradio
 pillow
+gradio_client
