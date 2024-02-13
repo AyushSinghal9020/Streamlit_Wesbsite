@@ -4,7 +4,6 @@ from PIL import Image
 import torch
 import os 
 
-st.write(os.listdir('Main'))
 import streamlit.components.v1 as components
 from gradio_client import Client
 
@@ -208,7 +207,7 @@ def home() :
         <a href = 'https://www.google.com'>
             <img 
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][3])}" 
-                width="400" 
+                width="300" 
                 height="200">
         </a>
         ''' , unsafe_allow_html = True)
@@ -217,7 +216,7 @@ def home() :
         <a href = 'https://www.google.com'>
             <img
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][4])}"
-                width="400"
+                width="300"
                 height="200">
         </a>
         ''' , unsafe_allow_html = True)
@@ -227,7 +226,7 @@ def home() :
         <a href = 'https://www.google.com'>
             <img
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][7])}"
-                width="400" 
+                width="300" 
                 height="200"> 
         </a> 
         ''' , unsafe_allow_html = True)
@@ -237,7 +236,7 @@ def home() :
         <a href = 'https://www.google.com'>
             <img 
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][8])}" 
-                width="400" 
+                width="300" 
                 height="200">
         </a>
         ''' , unsafe_allow_html = True)
@@ -249,7 +248,7 @@ def home() :
         <a href = 'https://www.google.com'>
             <img
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][5])}"
-                width="400"
+                width="300"
                 height="200">
         </a>
         ''' , unsafe_allow_html = True)
