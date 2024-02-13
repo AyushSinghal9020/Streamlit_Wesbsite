@@ -26,114 +26,114 @@ from presidio_analyzer import AnalyzerEngine
 
 themes = {
     '0' : [
-        'Assets/Background/Road.jpg' , 
+        'Main/Assets/Background/Road.jpg' , 
         '# Road - Where the journey never ends and so does the traffic.' , 
         'If you dont like the Road theme, you can change it by clicking on the `Generate Images` Button' , 
-        'Assets/Project Tiles/ML_DL_AI/Road/AI Gen-Text Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Road/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Road/HUBMAP.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Road/LLM Exam.png' , 
-        'Assets/Project Tiles/Research/Road/VAl_rind.png' , 
-        'Assets/Project Tiles/Development/Road/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/Road/AI Gen-Text Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Road/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Road/HUBMAP.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Road/LLM Exam.png' , 
+        'Main/Assets/Project Tiles/Research/Road/VAl_rind.png' , 
+        'Main/Assets/Project Tiles/Development/Road/VA_dev.png'
         ] ,
     '1' : [
-        'Assets/Background/Nature.jpg' , 
+        'Main/Assets/Background/Nature.jpg' , 
         '# No, you cannot eat that Mushroom' , 
         'If you dont like the Nature theme, you can change it by clicking on the `Generate Images` Button' ,
-        'Assets/Project Tiles/ML_DL_AI/Nature/AI Gen-Text Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Nature/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Nature/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Nature/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/Nature/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/Nature/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/Nature/AI Gen-Text Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Nature/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Nature/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Nature/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/Nature/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/Nature/VA_dev.png'
         ] , 
     '2' : [
-        'Assets/Background/City.jpg' , 
+        'Main/Assets/Background/City.jpg' , 
         '# City - Where the lights never go out and so does the noise.' , 
         'If you dont like the City theme, you can change it by clicking on the `Generate Images` Button' ,  
-        'Assets/Project Tiles/ML_DL_AI/City/AI Gen-Text Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/City/PII Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/City/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/City/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/City/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/City/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/City/AI Gen-Text Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/City/PII Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/City/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/City/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/City/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/City/VA_dev.png'
         ] ,
     '3' : [
-        'Assets/Background/Space.jpg' , 
+        'Main/Assets/Background/Space.jpg' , 
         '# No, you cannot pee there'  ,  
         'If you dont like the Space theme, you can change it by clicking on the `Generate Images` Button' , 
-        'Assets/Project Tiles/ML_DL_AI/Space/AI Gen-Text Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Space/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Space/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Space/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/Space/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/Space/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/Space/AI Gen-Text Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Space/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Space/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Space/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/Space/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/Space/VA_dev.png'
         ] ,
     '4' : [
-        'Assets/Background/Sea.jpg' , 
+        'Main/Assets/Background/Sea.jpg' , 
         '# Every sea is just a huge Pond' , 
         'If you dont like the Sea theme, you can change it by clicking on the `Generate Images` Button' ,
-        'Assets/Project Tiles/ML_DL_AI/Sea/AI Gen-Text Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Sea/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Sea/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Sea/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/Sea/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/Sea/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/Sea/AI Gen-Text Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Sea/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Sea/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Sea/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/Sea/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/Sea/VA_dev.png'
         ] ,
     '5' : [
-        'Assets/Background/Plane.jpg' , 
+        'Main/Assets/Background/Plane.jpg' , 
         '# No, your phone will not survive that high' ,
         'If you dont like the Plane theme, you can change it by clicking on the `Generate Images` Button' , 
-        'Assets/Project Tiles/ML_DL_AI/Plane/AI Gen-Text Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Plane/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Plane/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Plane/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/Plane/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/Plane/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/Plane/AI Gen-Text Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Plane/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Plane/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Plane/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/Plane/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/Plane/VA_dev.png'
         ] ,
     '6' : [
-        'Assets/Background/Mountain.jpg' , 
+        'Main/Assets/Background/Mountain.jpg' , 
         '# Mountain - Where the air is thin and so are the chances of survival' , 
         'If you dont like the Mountain theme, you can change it by clicking on the `Generate Images` Button' ,
-        'Assets/Project Tiles/ML_DL_AI/Mountain/AI Gen-Text Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Mountain/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Mountain/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Mountain/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/Mountain/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/Mountain/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/Mountain/AI Gen-Text Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Mountain/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Mountain/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Mountain/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/Mountain/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/Mountain/VA_dev.png'
         ] ,
     '7' : [
-        'Assets/Background/WaterFall.jpg' , 
+        'Main/Assets/Background/WaterFall.jpg' , 
         '# WaterFall - Natures way to felx' , 
         'If you dont like the WaterFall theme, you can change it by clicking on the `Generate Images` Button' ,
-        'Assets/Project Tiles/ML_DL_AI/WaterFall/AI Gen-Text Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/WaterFall/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/WaterFall/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/WaterFall/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/WaterFall/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/WaterFall/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/WaterFall/AI Gen-Text Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/WaterFall/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/WaterFall/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/WaterFall/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/WaterFall/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/WaterFall/VA_dev.png'
         ] ,
     '8' : [
-        'Assets/Background/Fish.png' , 
+        'Main/Assets/Background/Fish.png' , 
         '# No, they cannot swim in stomach' , 
         'If you dont like the Fish theme, you can change it by clicking on the `Generate Images` Button' ,
-        'Assets/Project Tiles/ML_DL_AI/Fish/AI Gen-Text Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Fish/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Fish/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Fish/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/Fish/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/Fish/VA_dev.png'
+        'Main/Assets/Project Tiles/ML_DL_AI/Fish/AI Gen-Text Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Fish/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Fish/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Fish/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/Fish/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/Fish/VA_dev.png'
         ] ,
     '9' : [
-        'Assets/Background/Desert.jpg' , 
+        'Main/Assets/Background/Desert.jpg' , 
         '# Desert - Where nature hosts Mirage fashion shows' , 
         'If you dont like the Desert theme, you can change it by clicking on the `Generate Images` Button' , 
-        'Assets/Project Tiles/ML_DL_AI/Desert/AI Gen-Text Detection.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Desert/PII Detection.png' , 
-        'Assets/Project Tiles/ML_DL_AI/Desert/HUBMAP.png' ,
-        'Assets/Project Tiles/ML_DL_AI/Desert/LLM Exam.png' ,
-        'Assets/Project Tiles/Research/Desert/VAl_rind.png' ,
-        'Assets/Project Tiles/Development/Desert/VA_dev.png' 
+        'Main/Assets/Project Tiles/ML_DL_AI/Desert/AI Gen-Text Detection.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Desert/PII Detection.png' , 
+        'Main/Assets/Project Tiles/ML_DL_AI/Desert/HUBMAP.png' ,
+        'Main/Assets/Project Tiles/ML_DL_AI/Desert/LLM Exam.png' ,
+        'Main/Assets/Project Tiles/Research/Desert/VAl_rind.png' ,
+        'Main/Assets/Project Tiles/Development/Desert/VA_dev.png' 
         ]
 }
 
@@ -142,7 +142,7 @@ def home() :
     Home Page
     '''   
 
-    theme_number = open('Assets/TextFiles/Theme.txt').read()
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
 
     st.title('Ayush Singhal ')
@@ -150,17 +150,17 @@ def home() :
 
     for _ in range(7) : st.markdown('')
 
-    st.markdown(open('Assets/TextFiles/About Me.txt').read() , unsafe_allow_html = True)
-    st.markdown(open('Assets/TextFiles/About Me Markdown.txt').read() , unsafe_allow_html=True)
+    st.markdown(open('Main/Assets/TextFiles/About Me.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/About Me Markdown.txt').read() , unsafe_allow_html=True)
 
     for _ in range(7) : st.markdown('')
 
-    st.markdown(open('Assets/TextFiles/Skills.txt').read() , unsafe_allow_html = True)
-    st.markdown(open('Assets/TextFiles/Skills Markdown.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/Skills.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/Skills Markdown.txt').read() , unsafe_allow_html = True)
 
     classifier = NeuralNetwork()
-    classifier.load_state_dict(torch.load('Assets/Models/Classifier Model' , map_location = torch.device('cpu')))
-    generator = torch.load('Assets/Models/Generator Model' , map_location = torch.device('cpu'))
+    classifier.load_state_dict(torch.load('Main/Assets/Models/Classifier Model' , map_location = torch.device('cpu')))
+    generator = torch.load('Main/Assets/Models/Generator Model' , map_location = torch.device('cpu'))
     st.write('Stats can take some time to load')
 
     col_1 , col_2 = st.columns(2)
@@ -176,8 +176,8 @@ def home() :
         save_image(fake_image, 'Generated.jpeg')
         col_1.image('Generated.jpeg', width=200, caption=f'Image of {torch.argmax(label)} Generated by GAN')
 
-        with open('Assets/TextFiles/Theme.txt' , 'w') as file : file.write(str(torch.argmax(label).item()))
-        theme_number = open('Assets/TextFiles/Theme.txt').read()
+        with open('Main/Assets/TextFiles/Theme.txt' , 'w') as file : file.write(str(torch.argmax(label).item()))
+        theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
 
         col_2.markdown(themes[str(theme_number)][1])
 
@@ -190,12 +190,12 @@ def home() :
         st.write(theme_number)
         for _ in range(7) : col_2.markdown('')
 
-        col_2.code(open('Assets/Code/Classifier.py').read())
-        col_1.code(open('Assets/Code/GAN.py').read())
+        col_2.code(open('Main/Assets/Code/Classifier.py').read())
+        col_1.code(open('Main/Assets/Code/GAN.py').read())
         with col_2 : components.iframe('https://api.wandb.ai/links/ayushsinghal659/i4ta3isp', height=600 , scrolling = True)
         with col_1 : components.iframe('https://api.wandb.ai/links/ayushsinghal659/tm39kito', height=600 , scrolling = True)
 
-    st.markdown(open('Assets/TextFiles/Projects.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/Projects.txt').read() , unsafe_allow_html = True)
 
     col_1 , col_2  = st.columns(2)
 
@@ -203,7 +203,7 @@ def home() :
     with col_1 : 
 
         st.write('Use Navigation to go to specific project')
-        st.markdown(open('Assets/TextFiles/Deep Learning Projects.txt').read() , unsafe_allow_html = True)
+        st.markdown(open('Main/Assets/TextFiles/Deep Learning Projects.txt').read() , unsafe_allow_html = True)
         st.markdown(f'''
         <a href = 'https://www.google.com'>
             <img 
@@ -222,7 +222,7 @@ def home() :
         </a>
         ''' , unsafe_allow_html = True)
 
-        st.markdown(open('Assets/TextFiles/Research Projects.txt').read() , unsafe_allow_html = True)
+        st.markdown(open('Main/Assets/TextFiles/Research Projects.txt').read() , unsafe_allow_html = True)
         st.markdown(f'''
         <a href = 'https://www.google.com'>
             <img
@@ -232,7 +232,7 @@ def home() :
         </a> 
         ''' , unsafe_allow_html = True)
 
-        st.markdown(open('Assets/TextFiles/Development Projects.txt').read() , unsafe_allow_html = True)
+        st.markdown(open('Main/Assets/TextFiles/Development Projects.txt').read() , unsafe_allow_html = True)
         st.markdown(f'''
         <a href = 'https://www.google.com'>
             <img 
@@ -265,18 +265,18 @@ def home() :
         # ''' , unsafe_allow_html = True)
 
 
-    st.markdown(open('Assets/TextFiles/Accomplishments.txt').read() , unsafe_allow_html = True)
-    st.markdown(open('Assets/TextFiles/Accomplishments Markdown.txt').read() , unsafe_allow_html = True)
-    st.markdown(open('Assets/TextFiles/How To Reach Me.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/Accomplishments.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/Accomplishments Markdown.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/How To Reach Me.txt').read() , unsafe_allow_html = True)
 def image_to_music() : 
     '''
     Image to Music Page
     '''
 
-    theme_number = open('Assets/TextFiles/Theme.txt').read()
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
     
-    st.markdown(open('Assets/TextFiles/AI Gen-Text Detection.txt').read())
+    st.markdown(open('Main/Assets/TextFiles/AI Gen-Text Detection.txt').read())
 
     image_in = st.file_uploader(
         'Image reference' , 
@@ -285,7 +285,7 @@ def image_to_music() :
     if image_in : 
 
         image = Image.open(image_in)
-        image.save('Assets/Generated/Gen.jpg')
+        image.save('Main/Assets/Generated/Gen.jpg')
 
         if st.button('Make music from my pic !') :
 
@@ -300,10 +300,10 @@ def pii_detection() :
     '''
     PII Detection Page
     '''
-    theme_number = open('Assets/TextFiles/Theme.txt').read()
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
  
-    st.markdown(open('Assets/TextFiles/PII Detection.txt').read())
+    st.markdown(open('Main/Assets/TextFiles/PII Detection.txt').read())
 
     text = st.text_area('Enter Text')
     col_1 , col_2 = st.columns(2)
@@ -323,33 +323,33 @@ def hubmap() :
     HUBMAP Page
     '''
 
-    theme_number = open('Assets/TextFiles/Theme.txt').read()
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
     
-    st.markdown(open('Assets/TextFiles/HUBMAP.txt').read())
+    st.markdown(open('Main/Assets/TextFiles/HUBMAP.txt').read())
 
-    st.code(open('Assets/Code/Hubmap.py').read())
+    st.code(open('Main/Assets/Code/Hubmap.py').read())
     components.iframe('https://wandb.ai/ayushsinghal659/uncategorized/reports/HUBMAP--Vmlldzo2ODEwMjg5?accessToken=tbwoj46kvijblyq3ce0s1vwlr3nk5knn89ctlmhg5etbht40604hyzr2b7muu9sj', height=600 , scrolling = True)
 
 # def llm_exam() :
 
-#     theme_number = open('Assets/TextFiles/Theme.txt').read()
+#     theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
 #     set_bg_hack(themes[str(theme_number)][0])
 
-#     st.markdown(open('Assets/TextFiles/LLM Exam.txt').read())
+#     st.markdown(open('Main/Assets/TextFiles/LLM Exam.txt').read())
 
 def val_rind() :
 
-    theme_number = open('Assets/TextFiles/Theme.txt').read()
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
 
-    st.markdown(open('Assets/TextFiles/VAl_rind.txt').read()) 
+    st.markdown(open('Main/Assets/TextFiles/VAl_rind.txt').read()) 
 def va_dev() :
     
-    theme_number = open('Assets/TextFiles/Theme.txt').read()
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
 
-    st.markdown(open('Assets/TextFiles/VA_dev.txt').read())
+    st.markdown(open('Main/Assets/TextFiles/VA_dev.txt').read())
     
 st.sidebar.title('navigation')
 
