@@ -1,0 +1,9 @@
+# Behind the Text: Can AI Chatbots Unintentionally Spill Your Secrets?
+
+As $Large$ $Languge$ $Models$ $(LLMs)$ consume `enormous amounts of text data` for training, they may `mistakenly swallow` and keep pieces of $Personally$ $Identifiable$ $Information$ $(PII)$ , such as `Names`/`Addresses`/`Financial Information`. This information can then `propagate via created text`, possibly revealing people's privacy. While $LLMs$ can be useful for `summarizing information` and `providing personalized content`, `privacy problems loom big`. Consider a chatbot unintentionally revealing your home address, or your financial information!. **`AI-generated text is everywhere, but what about the personal data it might hold?`**
+
+This $Project$ acts as a `Shield`, using `Advanced Algorithms` to `detect` and `protect Sensitive Information` lurking within machine-made text. Think of it as a digital guardian, ensuring AI writes ethically and protects our privacy in this new linguistic era.
+
+#### `Just write your text and see where you might reveal PII in your text`
+
+**Note : Used analyzers are not good at detecting PII of Non-English words**

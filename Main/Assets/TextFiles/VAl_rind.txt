@@ -1,0 +1,12 @@
+# VAl_rind : A new Generation of Neural Networks
+
+##### **$VAl_-rind$ is a `Python Library` based on $Pytorch$/$Numpy$ for training $Neural$ $Networks$.** 
+
+* Uses a `totally new approach` for `calculating` $Matrix$ $Multiplication$ with $Time$ $Complexity$ of just $O(n)$ instead of $Strassen's$ $Algorithm$ $O(n^{log7})$. 
+* This enables `complex models` like $BERT$ to be `Pre-Trained` from `scratch` on a `single` $CPU$ instead of expensive large $GPUs$/$TPUs$ in `less time`. 
+* It also opens the door for $Neural$ $Evolution$ without actually training on a `Dataset` till a huge extent. 
+* It also opens door for `using all kind` of $Bivariate$ $Functions$ to be used in $Matrix$ $Multiplication$. 
+* It decreases the $Time$ $Complexity$ of $Neural$ $Evolution$ to $O(logn)$ that previously used to take $O(n!)$. 
+* It enables us to `create` and `train` $Graph$ $Neural$ $Networks$ in only $4-5$ $LOC$. 
+
+Here is the link to the **[Library](https://github.com/avalrind/VAl_rind)**

@@ -1,0 +1,5 @@
+<h2 
+    style = 'text-align: center; 
+    color: white;'>
+    Skills
+</h2>

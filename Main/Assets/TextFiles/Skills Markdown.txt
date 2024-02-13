@@ -1,0 +1,27 @@
+```
+Basics
+│
+└─Python
+```
+```
+Deep Learning 
+│
+├─Tensorflow
+│   │
+│   ├─Keras
+│   │
+│   └─Pytorch
+│       │
+│       └─Pytorch Lightning
+│
+├─Hugging Face
+│
+├─Microsoft Presidio
+│
+└─NLTK
+```
+```
+Monitoring
+│
+└─Weights and Biases
+```

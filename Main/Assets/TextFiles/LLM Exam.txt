@@ -1,0 +1,7 @@
+# LLMs Untapped Potential: Investigating the Underrated Capabilities of Large Language Models
+
+The `ubiquity` of $Large$ $Language$ $Models$ $(LLMs)$ has `not` translated to a `proportionate appreciation of their capabilities`. To `investigate` this `potential underestimation`, researchers on Kaggle conducted a `competition` utilizing $Generative$ $Pre-Trained$ $Transformer$ $(GPT-3.5)$, a $175-Billion$ $Parameter$ $LLM$, to generate `Multiple-Choice Questions and Answer Options`. Surprisingly, participants achieved accuracy scores of $0.85-0.90$ by `Fine-Tuning` the `significantly smaller` $Bi-Directional$ $Encoded$ $Representation$ $Of$ $Transformers$ $(BERT)$ model with only $500-Million$ $Parameters$, highlighting the `effectiveness of fine-tuning` even in the face of `seemingly superior models`.
+
+This $Project$ aims to `replicate` and `expand upon this experiment`. Similar to the Kaggle competition, this project will `heavily fine-tune` various $LMs$ on `internal` and `external` `datasets`. By comparing the `performance` of `Fine-Tuned` models across `different parameter sizes`, the project seeks to further elucidate the potential underestimation of LLMs and explore the impact of fine-tuning on their capabilities.
+
+#### `Just Enter the questions with 4 options and see the results`

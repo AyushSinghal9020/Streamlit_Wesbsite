@@ -1,0 +1,10 @@
+# VA_dev : A way for Uninfied Development
+
+##### **$V_-dev$ is a `Python Library` which allow users to `directly load` and `run` `Functions`/`Classes` from files based on `other languages` inside the `Python Environment.`** 
+* It enables the user to use `Python Interface` and get `Faster Processing` from `other languages`.
+* It `eliminates` the tedious process to `configure` $Dynamic$ $Link$ $Libraires$ $(DLL)$ files and $Microsoft$ $Desktop$ $Development$ $Studio$ for `Programing Languages`
+* The library itself takes `very little time` to `load` the functions and get the output with an `increase` of $0.05$% in $Time$ $Complexity$.
+* It acts as an $All-In-One$ $API$ for `connecting different languages` and working together with them in a `seamless environment`.  
+* Currently it supports $C$/$C++$/$Java$.
+
+Here is the link to the **[Library](https://github.com/AyushSinghal9020/vadev)**

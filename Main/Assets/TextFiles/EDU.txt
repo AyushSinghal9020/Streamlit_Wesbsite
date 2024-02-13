@@ -1,0 +1,19 @@
+```
+Educational Qualification 
+│
+├─Subodh Public School, Jaipur
+│   │
+│   └─Schooling
+│       │
+│       └─Science and Mathematics
+│           │  
+│           └─April 2009 - March 2021
+│
+└─JECRC University, Jaipur
+    │
+    └─Graduation
+        │
+        └─B.Tech in Computer Science and Engineering
+            │
+            └─Aug 2021 - Aug 2025    
+```

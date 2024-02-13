@@ -1,0 +1,27 @@
+```
+How to Reach Me
+│
+├─Mail
+│   │
+│   └─ayushsinghal659@gmail.com
+│
+├─Github
+│   │
+│   └─https://github.com/AyushSinghal9020
+│
+├─LinkedIn
+│   │
+│   └─https://www.linkedin.com/in/ayush-singhal-a0614a221/
+│
+├─Kaggle
+│   │
+│   └─https://www.kaggle.com/ayushs9020
+│
+├─Number
+│   │
+│   └─+91 7737054603
+│
+└─Address
+    │
+    └─Jaipur, Rajasthan, India
+```
