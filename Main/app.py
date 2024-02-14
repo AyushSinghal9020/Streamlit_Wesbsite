@@ -204,53 +204,43 @@ def home() :
         st.write('Use Navigation to go to specific project')
         st.markdown(open('Main/Assets/TextFiles/Deep Learning Projects.txt').read() , unsafe_allow_html = True)
         st.markdown(f'''
-        <a href = 'https://www.google.com'>
             <img 
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][3])}" 
                 width="300" 
                 height="200">
-        </a>
         ''' , unsafe_allow_html = True)
         for _ in range(4) : st.markdown('')
         st.markdown(f'''
-        <a href = 'https://www.google.com'>
             <img
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][4])}"
                 width="300"
                 height="200">
-        </a>
         ''' , unsafe_allow_html = True)
 
         st.markdown(open('Main/Assets/TextFiles/Research Projects.txt').read() , unsafe_allow_html = True)
         st.markdown(f'''
-        <a href = 'https://www.google.com'>
             <img
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][7])}"
                 width="300" 
                 height="200"> 
-        </a> 
         ''' , unsafe_allow_html = True)
 
         st.markdown(open('Main/Assets/TextFiles/Development Projects.txt').read() , unsafe_allow_html = True)
         st.markdown(f'''
-        <a href = 'https://www.google.com'>
             <img 
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][8])}" 
                 width="300" 
                 height="200">
-        </a>
         ''' , unsafe_allow_html = True)
 
     with col_2 : 
 
         for _ in range(6) : st.markdown('')
         st.markdown(f'''
-        <a href = 'https://www.google.com'>
             <img
                 src="data:image/jpeg;base64,{get_image_base64_str(themes[str(theme_number)][5])}"
                 width="300"
                 height="200">
-        </a>
         ''' , unsafe_allow_html = True)
 
         # for _ in range(4) : st.markdown('')
