@@ -95,7 +95,6 @@ def home() :
     classifier = NeuralNetwork()
     classifier.load_state_dict(torch.load('Main/Assets/Models/Classifier Model' , map_location = torch.device('cpu')))
     generator = torch.load('Main/Assets/Models/Generator Model' , map_location = torch.device('cpu'))
-    st.write('Stats can take some time to load')
 
     col_1 , col_2 = st.columns(2)
 
@@ -290,7 +289,7 @@ def va_dev() :
 
     st.markdown(open('Main/Assets/TextFiles/VA_dev.txt').read())
     
-st.sidebar.title('navigation')
+st.sidebar.title('Navigation')
 
 option = st.sidebar.selectbox(
     'Go to' , 
