@@ -158,7 +158,7 @@ def get_caption(image) :
     img_to_txt = Client(models['MoonDream'])
 
     response = img_to_txt.predict(
-        'Assets/Generated/Gen.jpg' , 
+        'Main/Assets/Generated/Gen.jpg' , 
         'Describe this Image Precisely in Detail' , 
         api_name = '/answer_question')
 
@@ -179,7 +179,7 @@ def get_music(text) :
 
     txt_to_audi = Client('https://haoheliu-audioldm2-text2audio-text2music.hf.space/')
 
-    destination_path = 'Assets'
+    destination_path = 'Main/Assets'
     response = txt_to_audi.predict(
         text , 
         'Low Quality' , 
