@@ -1,5 +1,6 @@
 ```
-Runner Up
 │
-└─Became a Runner Up at Blaze AI Hackathon December 2023
+├─Became a Runner Up at Blaze AI Hackathon December 2023
+│
+└─Became Kaggle Notebooks Master
 ```
