@@ -213,12 +213,10 @@ def answer_question(question) :
         1) str : Answer to the question
     '''
 
-    st.write('API : ' , st.secrets['API_KEY'])
-
     genai.configure(api_key = st.secrets['API_KEY'])
 
-    resume_text = open('/workspaces/codespaces-blank/Streamlit_Wesbsite/Main/Assets/TextFiles/Resume.txt').read()
-    about_me = open('/workspaces/codespaces-blank/Streamlit_Wesbsite/Main/Assets/TextFiles/link_about_me.txt').read()
+    resume_text = open('Main/Assets/TextFiles/Resume.txt').read()
+    about_me = open('Main/Assets/TextFiles/link_about_me.txt').read()
 
     model = genai.GenerativeModel('gemini-pro')
 
