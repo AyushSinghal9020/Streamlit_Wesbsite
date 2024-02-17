@@ -1,0 +1,37 @@
+Ayush Singhal
+Jaipur, Rajasthan | +91 7737054603 | Mail | LinkedIn | Github | Kaggle | Twitter | Website
+Experience
+Kaggle Master Aug 2023 – Present
+Kaggle , USA
+• Conducted web scraping of wholesale websites to gather retail sales data for analysis.
+• Identified top-selling and best-rated products for featuring on weed.com.
+• Utilized various Language Model models to generate product content.
+Projects
+VALrind(work in porgress) (Python-Numpy)
+• Made a Python Library for training Neural Networks. Used a different approach for Matrix Multiplication.
+Integrated different types of Bivariate Functions
+• Reduced Time-Complexity to O(n). Trained BERT on single CPU from scratch. Decreased Neural Evolution
+Time-Complexity to O(logn)
+• Enabled Graph Neural network creation, visualization and training
+Vdev(work in progress) (Python)
+• Made a Python Library to connect different languages inside Python Environment. Decreased Computation Time
+• Removed the dependency of DLL Files
+Ethereum Price Prediction (Python - Pytorch Lightning)
+• Implemented Ethereum price prediction using Pytorch LSTMs in Python with Pytorch Lightning.
+• Achieved close to 0 RMSE loss, highlighting the model’s accuracy in forecasting.
+• Demonstrated the effectiveness of the chosen methodology for Ethereum price prediction.
+Student Assesment Evaluation (Python - Pytorch, HuggingFace, WandB)
+• Applied RoBERTa, PyTorch, HuggingFace, and WandB to predict student assessment scores with a focus on
+wording and content.
+• Achieved an 83 Percent accuracy in evaluating student assessments, highlighting the model’s effectiveness.
+• Integrated Python and a comprehensive tech stack for a robust system to analyze and predict student performance.
+Education
+B-tech in Computer Science and Engineering 2021-2025
+JECRC University
+Awards & Honors
+Runner Up at Blaze AI Hackathon 2023
+Blaze AI 2023
+Specialized Skills
+Programming Languages - Python (Advanced)
+Deep Learning - Tensorflow, Keras, Pytorch, Pytorch Lightning, Hugging Face, Microsoft Presidio, NLTK
+Monitoring - Weights and Biases
