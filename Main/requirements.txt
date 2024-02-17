@@ -6,3 +6,6 @@ presidio_analyzer
 gradio
 pillow
 gradio_client
+google 
+google-ai-generativelanguage
+google-generativeai
