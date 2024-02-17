@@ -3,9 +3,9 @@ Jaipur, Rajasthan | +91 7737054603 | Mail | LinkedIn | Github | Kaggle | Twitter
 Experience
 Kaggle Master Aug 2023 – Present
 Kaggle , USA
-• Conducted web scraping of wholesale websites to gather retail sales data for analysis.
-• Identified top-selling and best-rated products for featuring on weed.com.
-• Utilized various Language Model models to generate product content.
+* Engaged in diverse projects spanning computer vision, NLP, and speech recognition 
+* Specialized in U-Net architectures for high-quality image segmentation
+* Fine-tuned language models for Kaggle competitions including Kaggle LLM and CommonLit Readability.
 Projects
 VALrind(work in porgress) (Python-Numpy)
 • Made a Python Library for training Neural Networks. Used a different approach for Matrix Multiplication.
