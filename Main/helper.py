@@ -7,6 +7,8 @@ import base64
 import streamlit as st
 import torch 
 import torch.nn as nn
+import google.generativeai as genai
+import os 
 
 models = {
     'MAGNet' : 'https://fffiloni-magnet.hf.space/' , 
@@ -196,3 +198,47 @@ def get_music(text) :
     sec_files = files[0] + '/' + sec_files[0]
 
     return sec_files
+
+
+def answer_question(question) :
+    '''echo
+    Answer the question
+
+    Args :
+
+        1) question : str : Question to answer
+
+    Returns :
+
+        1) str : Answer to the question
+    '''
+
+    st.write('API : ' , st.secrets['API_KEY'])
+
+    genai.configure(api_key = st.secrets['API_KEY'])
+
+    resume_text = open('/workspaces/codespaces-blank/Streamlit_Wesbsite/Main/Assets/TextFiles/Resume.txt').read()
+    about_me = open('/workspaces/codespaces-blank/Streamlit_Wesbsite/Main/Assets/TextFiles/link_about_me.txt').read()
+
+    model = genai.GenerativeModel('gemini-pro')
+
+    prompt = f'''
+    This is my Resume 
+
+    {resume_text}
+
+    This is my about me
+
+    {about_me}
+
+    Now someone else will ask you a question and you have to answer it
+
+    {question}
+    '''
+
+    response = model.generate_content(prompt)
+
+    try : return response.text
+    except : 
+        try : response.parts[0]
+        except : return 'Sorry, I cannot answer this question'
