@@ -1,0 +1,15 @@
+I am Ayush Singhal, a driven and self-taught software developer with a passion for machine learning. During my first year of graduation, I took the opportunity to explore a variety of fields in order to determine my true passions and interests. It was then that I discovered machine learning and was immediately drawn to the potential of this exciting field.
+
+Determined to deepen my understanding of machine learning, I taught myself everything I could about the topic. I spent countless hours learning new algorithms, building models and pipelines from scratch, and refining my skills. With my hard work and dedication, I was not only able to build complex models, but I also developed a deep understanding of the core mathematics behind the workings of these models.
+
+As a lifelong learner, I understand the importance of sharing knowledge and growing with my peers. With this in mind, I have started an independent repository containing solutions to complex problems from LeetCode, all with simple explanations. My commitment to continuing my own education, as well as helping others, is a testament to my drive and passion for technology. With over 4+ years of experience in Python programming, I am a highly skilled and motivated software developer, poised to make a significant impact in the world of technology.
+
+🌱 I’m currently learning more on Neural Networks/ Generative AI
+
+👀 I'm currently working on kaggle
+
+💬 Ask me about Python , Deep Learning
+
+👨‍💻 Take a look at my work - Github => https://github.com/AyushSinghal9020 
+
+📫 How to reach me - through mail => ayushsinghal659@gmail.com
