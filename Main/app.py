@@ -11,7 +11,9 @@ from helper import (
     set_bg_hack , 
     get_markdown_iamge , 
     NeuralNetwork ,
-    answer_question
+    answer_question , 
+    get_text_from_img , 
+    get_speech_from_text
 )
 
 import google.generativeai as genai
@@ -93,6 +95,9 @@ def home() :
         answer = answer_question(question)
         st.write(answer)
 
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
     for _ in range(7) : st.markdown('')
 
     st.markdown(open('Main/Assets/TextFiles/About Me.txt').read() , unsafe_allow_html = True)
@@ -102,6 +107,7 @@ def home() :
 
     st.markdown(open('Main/Assets/TextFiles/Skills.txt').read() , unsafe_allow_html = True)
     st.markdown(open('Main/Assets/TextFiles/Skills Markdown.txt').read() , unsafe_allow_html = True)
+
 
     classifier = NeuralNetwork()
     classifier.load_state_dict(torch.load('Main/Assets/Models/Classifier Model' , map_location = torch.device('cpu')))
@@ -130,6 +136,9 @@ def home() :
 
     set_bg_hack(themes[str(theme_number)][0])
 
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+    
     st.markdown(open('Main/Assets/TextFiles/Projects.txt').read() , unsafe_allow_html = True)
 
     col_1 , col_2  = st.columns(2)
@@ -158,6 +167,12 @@ def home() :
             width="400"
             height="200">
     ''' , unsafe_allow_html = True)
+    col_2.markdown(f'''
+        <img
+            src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Project Tiles/Illuminating The Unseen.jpeg')}"
+            width="400"
+            height="200">
+    ''' , unsafe_allow_html = True)
 
     st.markdown(open('Main/Assets/TextFiles/Research Projects.txt').read() , unsafe_allow_html = True)
     
@@ -176,6 +191,9 @@ def home() :
             width="400" 
             height="200">
     ''' , unsafe_allow_html = True)
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
 
     st.markdown(open('Main/Assets/TextFiles/Accomplishments.txt').read() , unsafe_allow_html = True)
     st.markdown(open('Main/Assets/TextFiles/Accomplishments Markdown.txt').read() , unsafe_allow_html = True)
@@ -218,6 +236,45 @@ def home() :
 </a>
 ''' , unsafe_allow_html = True)
 
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+def img_to_t() : 
+
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+    st.markdown(open('Main/Assets/TextFiles/Illuminating The Unseen.txt').read())
+
+    image = st.file_uploader(
+        'Upload your Prescription/Test Report' , 
+        type = ['png' , 'jpg' , 'jpeg' , 'webp']
+    )
+
+    if image : 
+
+        image = Image.open(image)
+        image.save('Main/Assets/MedImages/Image.jpg')
+
+        if st.button('Prcoess the Report') :
+
+            st.write('Processing your Image, this can take a while') 
+
+            text = get_text_from_img()
+
+            st.write('You can listen to this report by clicking the button below the text')
+
+            st.write(text)
+            get_speech_from_text(text)
+
+            st.audio('Main/Assets/MedSpeech/Prescription.mp3')
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+            
 def image_to_music() : 
     '''
     Image to Music Page
@@ -226,6 +283,9 @@ def image_to_music() :
     theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
     
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
     st.markdown(open('Main/Assets/TextFiles/AI Gen-Text Detection.txt').read())
 
     image_in = st.file_uploader(
@@ -246,12 +306,19 @@ def image_to_music() :
             path = get_music(caption)
 
             st.audio(path , format = 'audio/mp4')
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
 def pii_detection() :
     '''
     PII Detection Page
     '''
     theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
  
     st.markdown(open('Main/Assets/TextFiles/PII Detection.txt').read())
 
@@ -268,10 +335,17 @@ def pii_detection() :
             for analyzer_result 
             in analyzer_results 
         })
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
 def hubmap() :
     '''
     HUBMAP Page
     '''
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
 
     theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
@@ -280,6 +354,9 @@ def hubmap() :
 
     st.code(open('Main/Assets/Code/Hubmap.py').read())
     components.iframe('https://wandb.ai/ayushsinghal659/uncategorized/reports/HUBMAP--Vmlldzo2ODEwMjg5?accessToken=tbwoj46kvijblyq3ce0s1vwlr3nk5knn89ctlmhg5etbht40604hyzr2b7muu9sj', height=600 , scrolling = True)
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
 
 # def llm_exam() :
 
@@ -293,15 +370,27 @@ def val_rind() :
     theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
 
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
     st.markdown(open('Main/Assets/TextFiles/VAl_rind.txt').read()) 
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
 def va_dev() :
     
     theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
     set_bg_hack(themes[str(theme_number)][0])
 
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
     st.markdown(open('Main/Assets/TextFiles/VA_dev.txt').read())
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
     
-st.sidebar.title('navigation')
+st.sidebar.title('Navigation')
 
 option = st.sidebar.selectbox(
     'Go to' , 
@@ -309,12 +398,14 @@ option = st.sidebar.selectbox(
         'Home' , 
         'Echos Of The Canvas' , 
         'Behind The Text' , 
+        'Illuminating The Unseen' , 
         'Beyond The Visible' ,  
         'VAl_rind' , 
         'VA_dev'
     ])
 
 if option == 'Home' : home()
+elif option == 'Illuminating The Unseen' : img_to_t()
 elif option == 'Echos Of The Canvas' : image_to_music()
 elif option == 'Behind The Text' : pii_detection()
 elif option == 'Beyond The Visible' : hubmap()
