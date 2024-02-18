@@ -4,7 +4,6 @@ from PIL import Image
 import streamlit.components.v1 as components
 
 from helper import (
-    check_api , 
     get_caption , 
     get_music , 
     get_image_base64_str ,
