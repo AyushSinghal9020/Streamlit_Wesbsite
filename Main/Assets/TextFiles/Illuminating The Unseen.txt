@@ -1,0 +1,7 @@
+# Illuminating the Unseen: Emphasizing the ability to reveal something previously unknown.
+
+As many of us have experienced, `visiting healthcare professionals` often involves encountering `complex terminology`, `medical concepts`, and `numerical data`. Unfortunately, studies indicate that **`40-80% of this vital information is forgotten immediately`**, potentially `hindering understanding` and `adherence to treatment plans`.
+
+This $Project$ seeks to `bridge the gap` between `patients and their medical information` by addressing `this critical issue`.
+
+**`Just upload the image of your report/prescription and get all analysis and explaination to concepts`**
