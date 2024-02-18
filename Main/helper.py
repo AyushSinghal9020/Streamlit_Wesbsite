@@ -9,6 +9,9 @@ import torch
 import torch.nn as nn
 import google.generativeai as genai
 import os 
+import numpy as np
+from gtts import gTTS
+import easyocr
 
 models = {
     'MAGNet' : 'https://fffiloni-magnet.hf.space/' , 
@@ -199,7 +202,6 @@ def get_music(text) :
 
     return sec_files
 
-
 def answer_question(question) :
     '''echo
     Answer the question
@@ -240,3 +242,43 @@ def answer_question(question) :
     except : 
         try : response.parts[0]
         except : return 'Sorry, I cannot answer this question'
+
+def get_text_from_img() : 
+
+    reader = easyocr.Reader(['en'])
+    text = reader.readtext('Main/Assets/MedImages/Image.jpg')
+
+    text = [
+        val[1]
+        for val 
+        in text
+    ]
+
+    text = ' '.join(text)
+
+    genai.configure(api_key = 'AIzaSyDyaY8u-BdM_IxU_YbJ5n4JLHy6A4uvxOE')
+    model = genai.GenerativeModel('gemini-pro')
+
+    prompt = f'''
+Consider yourself a doctor. This is a prescription/test report of a Patient
+{text}
+
+Analyse the Report and provide suggestions and your analysis as text. If there is a difficult word. Try to explain the word in simple language. Add a disclaimer to suggest the pateint to visit a doctor if necessary. Do not use lines like I am not a doctor and other. Use Patient name wherevar necessary. If telling for a desiase, also tell expected symptons that the person might be feeling 
+    '''
+
+    response = model.generate_content(prompt)
+
+    try : return response.text
+    except : 
+        try : response.parts[0]
+        except : return 'Sorry I couldn Understand the Prescription'
+
+def get_speech_from_text(text) : 
+
+    myobj = gTTS(
+        text = text , 
+        lang = 'en' , 
+        slow = False
+    ) 
+
+    myobj.save('Main/Assets/MedSpeech/Prescription.mp3')
