@@ -256,7 +256,7 @@ def get_text_from_img() :
 
     text = ' '.join(text)
 
-    genai.configure(api_key = 'AIzaSyDyaY8u-BdM_IxU_YbJ5n4JLHy6A4uvxOE')
+    genai.configure(api_key = st.secrets['API_KEY'])
     model = genai.GenerativeModel('gemini-pro')
 
     prompt = f'''
