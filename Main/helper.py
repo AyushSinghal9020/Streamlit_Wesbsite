@@ -9,8 +9,6 @@ import torch
 import torch.nn as nn
 import google.generativeai as genai
 import os 
-import cv2
-import keras_ocr
 import numpy as np
 from gtts import gTTS
 import easyocr
