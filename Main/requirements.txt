@@ -9,3 +9,6 @@ gradio_client
 google 
 google-ai-generativelanguage
 google-generativeai
+numpy
+gTTS
+easyocr
