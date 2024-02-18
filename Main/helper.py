@@ -1,284 +1,414 @@
-from gradio_client import Client
-import ast
-import glob
-import os
-import shutil
-import base64
 import streamlit as st
-import torch 
-import torch.nn as nn
-import google.generativeai as genai
-import os 
-import numpy as np
-from gtts import gTTS
-import easyocr
+from copy import deepcopy
+from PIL import Image
+import streamlit.components.v1 as components
 
-models = {
-    'MAGNet' : 'https://fffiloni-magnet.hf.space/' , 
-    'AudioLDM-2' : 'https://haoheliu-audioldm2-text2audio-text2music.hf.space/' , 
-    'Riffusion' : 'https://fffiloni-spectrogram-to-music.hf.space/' , 
-    'Mustango' : 'https://declare-lab-mustango.hf.space/' , 
-    'MusicGen' : 'https://facebook-musicgen.hf.space/' , 
-    'Kosmos' : 'https://kosmos-music.hf.space/' , 
-    'MoonDream' : 'https://vikhyatk-moondream1.hf.space/' , 
-    'AudioLDM-2' : 'https://haoheliu-audioldm2-text2audio-text2music.hf.space/'
+from helper import (
+    check_api , 
+    get_caption , 
+    get_music , 
+    get_image_base64_str ,
+    set_bg_hack , 
+    get_markdown_iamge , 
+    NeuralNetwork ,
+    answer_question , 
+    get_text_from_img , 
+    get_speech_from_text
+)
+
+import google.generativeai as genai
+import torch 
+from torchvision.utils import save_image
+from presidio_analyzer import AnalyzerEngine
+
+st.set_page_config(layout = 'wide')
+
+themes = {
+    '0' : [
+        'Main/Assets/Background/Road.jpg' , 
+        '# Road - Where the journey never ends and so does the traffic.' , 
+        'If you dont like the Road theme, you can change it by clicking on the `Generate Images` Button'
+        ] ,
+    '1' : [
+        'Main/Assets/Background/Nature.jpg' , 
+        '# No, you cannot eat that Mushroom' , 
+        'If you dont like the Nature theme, you can change it by clicking on the `Generate Images` Button'
+        ] , 
+    '2' : [
+        'Main/Assets/Background/City.jpg' , 
+        '# City - Where the lights never go out and so does the noise.'
+        ] ,
+    '3' : [
+        'Main/Assets/Background/Space.jpg' , 
+        '# No, you cannot pee there'  ,  
+        'If you dont like the Space theme, you can change it by clicking on the `Generate Images` Button'
+        ] ,
+    '4' : [
+        'Main/Assets/Background/Sea.jpg' , 
+        '# Every sea is just a huge Pond' , 
+        'If you dont like the Sea theme, you can change it by clicking on the `Generate Images` Button'
+        ] ,
+    '5' : [
+        'Main/Assets/Background/Plane.jpg' , 
+        '# No, your phone will not survive that high' ,
+        'If you dont like the Plane theme, you can change it by clicking on the `Generate Images` Button'
+        ] ,
+    '6' : [
+        'Main/Assets/Background/Mountain.jpg' , 
+        '# Mountain - Where the air is thin and so are the chances of survival' , 
+        'If you dont like the Mountain theme, you can change it by clicking on the `Generate Images` Button'
+        ] ,
+    '7' : [
+        'Main/Assets/Background/WaterFall.jpg' , 
+        '# WaterFall - Natures way to felx' , 
+        'If you dont like the WaterFall theme, you can change it by clicking on the `Generate Images` Button'
+        ] ,
+    '8' : [
+        'Main/Assets/Background/Fish.png' , 
+        '# No, they cannot swim in stomach' , 
+        'If you dont like the Fish theme, you can change it by clicking on the `Generate Images` Button'
+        ] ,
+    '9' : [
+        'Main/Assets/Background/Desert.jpg' , 
+        '# Desert - Where nature hosts Mirage fashion shows' , 
+        'If you dont like the Desert theme, you can change it by clicking on the `Generate Images` Button' 
+        ]
 }
 
-def get_image_base64_str(image_path) : 
+def home() : 
     '''
-    Convert the image to base64 string
+    Home Page
+    '''   
 
-    Args :
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
 
-        1) image_path : str : Path to the image
+    st.title('Ayush Singhal ')
+    st.write('Kaggle Notebooks Master')
 
-    Returns :
+    col_1 , col_2 = st.columns(2)
+
+    question = col_1.text_input('Ask me anything (Powered By Google Gemini)' , 'What is the meaning of life ?')
+
+    if col_1.button('Ask') :
+
+        answer = answer_question(question)
+        st.write(answer)
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+    for _ in range(7) : st.markdown('')
+
+    st.markdown(open('Main/Assets/TextFiles/About Me.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/About Me Markdown.txt').read() , unsafe_allow_html=True)
+
+    for _ in range(7) : st.markdown('')
+
+    st.markdown(open('Main/Assets/TextFiles/Skills.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/Skills Markdown.txt').read() , unsafe_allow_html = True)
+
+
+    classifier = NeuralNetwork()
+    classifier.load_state_dict(torch.load('Main/Assets/Models/Classifier Model' , map_location = torch.device('cpu')))
+    generator = torch.load('Main/Assets/Models/Generator Model' , map_location = torch.device('cpu'))
+    st.write('Stats can take some time to load')
+
+    col_1 , col_2 = st.columns(2)
+
+
+    if col_1.button('Generate Images') : 
+
+        latent = torch.randn(1 , 128 , 1 , 1)
+
+        fake_image = generator(latent)
+        label = classifier(fake_image)
+
+        save_image(fake_image, 'Generated.jpeg')
+        col_1.image('Generated.jpeg', width=200, caption=f'Image of {torch.argmax(label)} Generated by GAN')
+
+        with open('Main/Assets/TextFiles/Theme.txt' , 'w') as file : file.write(str(torch.argmax(label).item()))
+        theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+
+        col_2.markdown(themes[str(theme_number)][1])
+
+        for _ in range(16) : col_2.markdown('')
+
+    set_bg_hack(themes[str(theme_number)][0])
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
     
-        1) str : Base64 string of the image
-    '''
+    st.markdown(open('Main/Assets/TextFiles/Projects.txt').read() , unsafe_allow_html = True)
 
-    return base64.b64encode(open(image_path , "rb").read()).decode('utf-8')
+    col_1 , col_2  = st.columns(2)
 
-def set_bg_hack(main_bg):
-    '''
-    Set the background of the streamlit app
-
-    Args :
-    
-        1) main_bg : str : Path to the background image
-
-    Returns :
-    
-        1) None
-    '''
-
-
-    main_bg_ext = "png"
+    col_1.write('Use Navigation to go to specific project')
         
-    st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
-             background-size: cover
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
-
-def get_markdown_iamge(image_path) : 
-    '''
-    Convert the image to markdown format
-
-    Args :
-
-        1) image_path : str : Path to the image
-
-    Returns :
+    st.markdown(open('Main/Assets/TextFiles/Deep Learning Projects.txt').read() , unsafe_allow_html = True)
     
-        1) str : Markdown string of the image
-    '''
+    col_1 , col_2 = st.columns(2)
 
-    return f'''<img 
-    src="data:image/jpeg;base64,{base64.b64encode(open(image_path, "rb").read()).decode()}"  
-    width="575" 
-    height="200">'''
+    col_1.markdown(f'''
+        <img 
+            src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Project Tiles/Echos Of The Canvas.jpeg')}" 
+            width="400" 
+            height="200">
+    ''' , unsafe_allow_html = True)
+    col_2.markdown(f'''
+        <img
+            src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Project Tiles/Behind The Text.jpeg')}"
+            width="400"
+            height="200">
+    ''' , unsafe_allow_html = True)
+    col_1.markdown(f'''
+        <img
+            src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Project Tiles/Beyond The Visiible.jpeg')}"
+            width="400"
+            height="200">
+    ''' , unsafe_allow_html = True)
+    col_2.markdown(f'''
+        <img
+            src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Project Tiles/Illuminating The Unseen.jpeg')}"
+            width="400"
+            height="200">
+    ''' , unsafe_allow_html = True)
 
-class NeuralNetwork(nn.Module) :
-    '''
-    Neural Network for Image Classification
-    '''
-
-
-    def __init__(self) :
-
-        super(NeuralNetwork , self).__init__()
-
-        self.flatten = nn.Flatten()
-
-        self.linear1 = nn.Linear(28 * 28 , 128)
-
-        self.relu = nn.ReLU()
-
-        self.linear2 = nn.Linear(128 , 10)
-
-    def forward(self , x) :
-        '''
-        Forward Pass of the Neural Network
-
-        Args :
-
-            1) x : Tensor : Input Tensor
-
-        Returns :
-
-            1) Tensor : Output Tensor
-        '''
-
-        x = self.flatten(x)
-
-        x = self.linear1(x)
-
-        x = self.relu(x)
-
-        x = self.linear2(x)
-
-        return x
-
-
-def check_api(model) :
-    '''
-    Check if the API is up and running
-
-    Args :
-
-        1) model : str : Name of the model
-
-    Returns :
-
-        1) Tuple : (Client , str) : Client Object and Status of the API
-    ''' 
-
-    try : 
+    st.markdown(open('Main/Assets/TextFiles/Research Projects.txt').read() , unsafe_allow_html = True)
     
-        client = Client(models[model])
-        return (client , 'API is up and running !')
     
-    except : return (None , 'API is down !')
+    st.markdown(f'''
+        <img
+            src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Project Tiles/VAlrind.jpeg')}"
+            width="400" 
+            height="200"> 
+    ''' , unsafe_allow_html = True)
 
-def get_caption(image) : 
+    st.markdown(open('Main/Assets/TextFiles/Development Projects.txt').read() , unsafe_allow_html = True)
+    st.markdown(f'''
+        <img 
+            src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Project Tiles/VAdev.jpeg')}" 
+            width="400" 
+            height="200">
+    ''' , unsafe_allow_html = True)
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+    st.markdown(open('Main/Assets/TextFiles/Accomplishments.txt').read() , unsafe_allow_html = True)
+    st.markdown(open('Main/Assets/TextFiles/Accomplishments Markdown.txt').read() , unsafe_allow_html = True)
+
+    col_1 , col_2 , col_3 , col_4 , col_5 , col_6 , col_7 , col_8 , col_9 , col_10 , col_11 , col_12 , col_13 , col_14 , col_15 = st.columns(15)
+
+    col_1.markdown(f'''
+<a href = 'ayushsinghal659@gmail.com'>
+    <img 
+        src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Reach/Mail.png')}" 
+        width="60" 
+        height="50">
+</a>
+''' , unsafe_allow_html = True)
+
+    col_2.markdown(f'''
+<a href = 'https://github.com/AyushSinghal9020'>
+    <img 
+        src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Reach/Github.png')}" 
+        width="60" 
+        height="50">
+</a>
+''' , unsafe_allow_html = True)
+
+    col_3.markdown(f'''
+<a href = 'https://www.kaggle.com/ayushs9020'>
+    <img 
+        src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Reach/Kaggle.png')}" 
+        width="70" 
+        height="50">
+</a>
+''' , unsafe_allow_html = True)
+
+    col_4.markdown(f'''
+<a href = 'www.linkedin.com'>
+    <img 
+        src="data:image/jpeg;base64,{get_image_base64_str('Main/Assets/Reach/Linkdin.webp')}" 
+        width="50" 
+        height="50">
+</a>
+''' , unsafe_allow_html = True)
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+def img_to_t() : 
+
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+    st.markdown(open('Main/Assets/TextFiles/Illuminating The Unseen.txt').read())
+
+    image = st.file_uploader(
+        'Upload your Prescription/Test Report' , 
+        type = ['png' , 'jpg' , 'jpeg' , 'webp']
+    )
+
+    if image : 
+
+        image = Image.open(image)
+        image.save('Main/Assets/MedImages/Image.jpg')
+
+        if st.button('Prcoess the Report') :
+
+            st.write('Processing your Image, this can take a while') 
+
+            text = get_text_from_img()
+
+            st.write('You can listen to this report by clicking the button below the text')
+
+            st.write(text)
+            get_speech_from_text(text)
+
+            st.audio('Main/Assets/MedSpeech/Prescription.mp3')
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+            
+def image_to_music() : 
     '''
-    Get the caption for the image
-
-    Args :
-
-        1) image : str : Path to the image
-
-    Returns :
-
-        1) str : Caption for the image
-    '''
-
-    img_to_txt = Client(models['MoonDream'])
-
-    response = img_to_txt.predict(
-        'Main/Assets/Generated/Gen.jpg' , 
-        'Describe this Image Precisely in Detail' , 
-        api_name = '/answer_question')
-
-    return response
-
-def get_music(text) :
-    '''
-    Get the music for the text
-
-    Args :
-
-        1) text : str : Text to convert to music
-
-    Returns :
-
-        1) str : Path to the music file
-    ''' 
-
-    txt_to_audi = Client('https://haoheliu-audioldm2-text2audio-text2music.hf.space/')
-
-    destination_path = 'Main/Assets'
-    response = txt_to_audi.predict(
-        text , 
-        'Low Quality' , 
-        10 , 6.5 , 2 , 3 , 
-        fn_index = 1)
-
-    directory_path = '/tmp/gradio'
-
-    files = glob.glob(directory_path + '/*')
-    files.sort(key=os.path.getmtime)
-
-
-    sec_files = os.listdir(files[0])
-    sec_files = files[0] + '/' + sec_files[0]
-
-    return sec_files
-
-def answer_question(question) :
-    '''echo
-    Answer the question
-
-    Args :
-
-        1) question : str : Question to answer
-
-    Returns :
-
-        1) str : Answer to the question
-    '''
-
-    genai.configure(api_key = st.secrets['API_KEY'])
-
-    resume_text = open('Main/Assets/TextFiles/Resume.txt').read()
-    about_me = open('Main/Assets/TextFiles/link_about_me.txt').read()
-
-    model = genai.GenerativeModel('gemini-pro')
-
-    prompt = f'''
-    This is my Resume 
-
-    {resume_text}
-
-    This is my about me
-
-    {about_me}
-
-    Now someone else will ask you a question and you have to answer it
-
-    {question}
-    '''
-
-    response = model.generate_content(prompt)
-
-    try : return response.text
-    except : 
-        try : response.parts[0]
-        except : return 'Sorry, I cannot answer this question'
-
-def get_text_from_img() : 
-
-    reader = easyocr.Reader(['en'])
-    text = reader.readtext('Main/Assets/MedImages/Image.jpg')
-
-    text = [
-        val[1]
-        for val 
-        in text
-    ]
-
-    text = ' '.join(text)
-
-    genai.configure(api_key = 'AIzaSyDyaY8u-BdM_IxU_YbJ5n4JLHy6A4uvxOE')
-    model = genai.GenerativeModel('gemini-pro')
-
-    prompt = f'''
-Consider yourself a doctor. This is a prescription/test report of a Patient
-{text}
-
-Analyse the Report and provide suggestions and your analysis as text. If there is a difficult word. Try to explain the word in simple language. Add a disclaimer to suggest the pateint to visit a doctor if necessary. Do not use lines like I am not a doctor and other. Use Patient name wherevar necessary. If telling for a desiase, also tell expected symptons that the person might be feeling 
+    Image to Music Page
     '''
 
-    response = model.generate_content(prompt)
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
+    
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
 
-    try : return response.text
-    except : 
-        try : response.parts[0]
-        except : return 'Sorry I couldn Understand the Prescription'
+    st.markdown(open('Main/Assets/TextFiles/AI Gen-Text Detection.txt').read())
 
-def get_speech_from_text(text) : 
+    image_in = st.file_uploader(
+        'Image reference' , 
+        type = ['png' , 'jpg' , 'jpeg'])
 
-    myobj = gTTS(
-        text = text , 
-        lang = 'en' , 
-        slow = False
-    ) 
+    if image_in : 
 
-    myobj.save('Main/Assets/MedSpeech/Prescription.mp3')
+        image = Image.open(image_in)
+        image.save('Main/Assets/Generated/Gen.jpg')
+
+        if st.button('Make music from my pic !') :
+
+            st.write('Generating Captions !')
+            caption = get_caption(image_in)
+
+            st.write('Generating Music !')
+            path = get_music(caption)
+
+            st.audio(path , format = 'audio/mp4')
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+def pii_detection() :
+    '''
+    PII Detection Page
+    '''
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+ 
+    st.markdown(open('Main/Assets/TextFiles/PII Detection.txt').read())
+
+    text = st.text_area('Enter Text')
+    col_1 , col_2 = st.columns(2)
+
+    if col_1.button('Detect') : 
+
+        analyzer = AnalyzerEngine()
+        analyzer_results = analyzer.analyze(text=text, language="en")
+
+        st.write({
+            analyzer_result.entity_type : text[analyzer_result.start : analyzer_result.end]
+            for analyzer_result 
+            in analyzer_results 
+        })
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+def hubmap() :
+    '''
+    HUBMAP Page
+    '''
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
+    
+    st.markdown(open('Main/Assets/TextFiles/HUBMAP.txt').read())
+
+    st.code(open('Main/Assets/Code/Hubmap.py').read())
+    components.iframe('https://wandb.ai/ayushsinghal659/uncategorized/reports/HUBMAP--Vmlldzo2ODEwMjg5?accessToken=tbwoj46kvijblyq3ce0s1vwlr3nk5knn89ctlmhg5etbht40604hyzr2b7muu9sj', height=600 , scrolling = True)
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+# def llm_exam() :
+
+#     theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+#     set_bg_hack(themes[str(theme_number)][0])
+
+#     st.markdown(open('Main/Assets/TextFiles/LLM Exam.txt').read())
+
+def val_rind() :
+
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+    st.markdown(open('Main/Assets/TextFiles/VAl_rind.txt').read()) 
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+def va_dev() :
+    
+    theme_number = open('Main/Assets/TextFiles/Theme.txt').read()
+    set_bg_hack(themes[str(theme_number)][0])
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+
+    st.markdown(open('Main/Assets/TextFiles/VA_dev.txt').read())
+
+    pb = st.progress(0) 
+    for _ in range(1) : pb.progress(100)
+    
+st.sidebar.title('Navigation')
+
+option = st.sidebar.selectbox(
+    'Go to' , 
+    [
+        'Home' , 
+        'Echos Of The Canvas' , 
+        'Behind The Text' , 
+        'Illuminating The Unseen' , 
+        'Beyond The Visible' ,  
+        'VAl_rind' , 
+        'VA_dev'
+    ])
+
+if option == 'Home' : home()
+elif option == 'Illuminating The Unseen' : img_to_t()
+elif option == 'Echos Of The Canvas' : image_to_music()
+elif option == 'Behind The Text' : pii_detection()
+elif option == 'Beyond The Visible' : hubmap()
+# elif option == 'LLM Exam' : llm_exam()
+elif option == 'VAl_rind' : val_rind()
+elif option == 'VA_dev' : va_dev()
