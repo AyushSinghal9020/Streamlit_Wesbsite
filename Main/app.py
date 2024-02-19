@@ -88,7 +88,7 @@ def home() :
 
     col_1 , col_2 = st.columns(2)
 
-    question = col_1.text_input('Ask me anything (Powered By Google Gemini)' , 'What is the meaning of life ?')
+    question = col_1.text_input('Ask me anything (Powered By Google Gemini)' , 'What are preffered languages and frameworks...?')
 
     if col_1.button('Ask') :
 
